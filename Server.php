@@ -50,6 +50,7 @@ while (true) {
             // Nëse serveri është i plotë, shto klientin në radhën e pritjes
             $waiting_queue[] = $new_socket;
             echo "Serveri është i plotë, lidhja u shtua në radhën e pritjes\n";
+            socket_write($new_socket,"Serveri eshte plote. Jeni vendosur ne pritje",1049);
         }
         unset($read_sockets[array_search($server_socket, $read_sockets)]);
     }

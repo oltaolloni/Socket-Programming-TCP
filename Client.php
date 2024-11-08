@@ -59,9 +59,11 @@ function send_command($socket, $command) {
 }
 $ison=true;
 while($ison){
+echo $response;
 // Sample commands to send to the server
-echo "Enter Command: ";
-$ison=send_command($client_socket,readline()."\r\n");
+    echo "Enter Command: ";
+    $ison=send_command($client_socket,readline()."\r\n");
+
 
 }
 

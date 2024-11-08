@@ -51,3 +51,19 @@
 [2024-11-08 22:41:05] Lidhje e re nga klienti me IP: 127.0.0.1
 [2024-11-08 22:41:11] Lidhje e re nga klienti me IP: 127.0.0.1
 [2024-11-08 22:41:25] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:09:11] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:09:18] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:09:24] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:09:30] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:11:57] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:11:59] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:12:01] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:12:03] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 23:18:35] Mesazh nga klienti: READ_FILE
