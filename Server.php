@@ -54,7 +54,13 @@ while (true) {
 
     // Menaxhon mesazhet e dërguara nga klientët
     foreach ($read_sockets as $socket) {
-        $data = @socket_read($socket, 1024, PHP_NORMAL_READ);
+        $read = [$socket];
+        $write = null;
+        $except = null;
+
+        if (socket_select($read, $write, $except, 0) > 0) {
+            $data = socket_read($socket, 1024, PHP_NORMAL_READ);
+        }
         if ($data === false) {
             // Mbyll lidhjen nëse klienti largohet ose dërgon një sinjal për të përfunduar lidhjen
             $index = array_search($socket, $client_sockets);
@@ -67,15 +73,15 @@ while (true) {
         // Ruaj mesazhin e klientit dhe dërgoje përgjigjen
         $data = trim($data);
         if ($data) {
-            echo "Mesazh nga klienti: $data\n";
+            echo "Mesazh nga klienti: $data\r\n";
             log_request("Mesazh nga klienti: $data");
 
             // Shkrimi i mesazhit për monitorim
-            file_put_contents($messages_file, "Mesazh nga klienti: $data\n", FILE_APPEND);
+            file_put_contents($messages_file, "Mesazh nga klienti: $data\r\n", FILE_APPEND);
 
             if ($data === "READ_FILE") {
                 // Dërgon përmbajtjen e një file-i te klienti
-                $file_content = file_get_contents("server_file.txt");
+                $file_content = file_get_contents("server_file.txt")."\r\n";
                 socket_write($socket, $file_content, strlen($file_content));
             } elseif ($data === "WRITE_FILE") {
                 // Për klientin me qasje të plotë, shton mesazh në file-in e serverit

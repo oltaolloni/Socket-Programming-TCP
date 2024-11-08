@@ -1,0 +1,8 @@
+[2024-11-08 16:03:47] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 16:03:47] Mesazh nga klienti: READ_FILE
+[2024-11-08 16:04:31] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 16:04:31] Mesazh nga klienti: READ_FILE
+[2024-11-08 16:05:15] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 16:05:15] Mesazh nga klienti: READ_FILE
+[2024-11-08 16:05:16] Mesazh nga klienti: WRITE_FILE
+[2024-11-08 16:05:17] Mesazh nga klienti: UNKNOWN_CMD
