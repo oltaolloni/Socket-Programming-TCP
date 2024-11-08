@@ -9,3 +9,12 @@ Mesazh nga klienti: READ_FILE
 Mesazh nga klienti: READ_FILE
 Mesazh nga klienti: WRITE_FILE
 Mesazh nga klienti: UNKNOWN_CMD
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: Hello
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: WRITE_FILE
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: WHAT
+Mesazh nga klienti: READ_FILE

@@ -6,3 +6,22 @@
 [2024-11-08 16:05:15] Mesazh nga klienti: READ_FILE
 [2024-11-08 16:05:16] Mesazh nga klienti: WRITE_FILE
 [2024-11-08 16:05:17] Mesazh nga klienti: UNKNOWN_CMD
+[2024-11-08 21:30:22] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:31:05] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:31:11] Mesazh nga klienti: READ_FILE
+[2024-11-08 21:32:38] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:32:42] Mesazh nga klienti: Hello
+[2024-11-08 21:32:49] Mesazh nga klienti: READ_FILE
+[2024-11-08 21:36:43] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:36:46] Mesazh nga klienti: EXIT
+[2024-11-08 21:36:52] Mesazh nga klienti: EXIT
+[2024-11-08 21:37:28] Mesazh nga klienti: WRITE_FILE
+[2024-11-08 21:42:28] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:45:05] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:51:45] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:51:53] Mesazh nga klienti: READ_FILE
+[2024-11-08 21:52:12] Mesazh nga klienti: WHAT
+[2024-11-08 21:53:20] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:53:26] Mesazh nga klienti: READ_FILE
+[2024-11-08 21:57:19] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 21:57:42] Lidhje e re nga klienti me IP: 127.0.0.1
