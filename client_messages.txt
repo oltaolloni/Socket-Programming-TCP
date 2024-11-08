@@ -18,3 +18,4 @@ Mesazh nga klienti: WRITE_FILE
 Mesazh nga klienti: READ_FILE
 Mesazh nga klienti: WHAT
 Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: READ_FILE

@@ -19,7 +19,15 @@ echo "Connected to server at $server_ip:$server_port\n";
 
 // Function to send a command to the server
 function send_command($socket, $command) {
-
+    $commands=[
+    "READ_FILE",
+    "EXIT",
+    "HELP"
+];
+    if (!in_array(trim($command),$commands)){
+        echo "This command does not exist.\n";
+        return true;
+    }
     if (trim($command) === "EXIT"){
         return false;
     }
