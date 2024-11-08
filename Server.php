@@ -52,6 +52,41 @@ while (true) {
         unset($read_sockets[array_search($server_socket, $read_sockets)]);
     }
 
+    // Menaxhon mesazhet e dërguara nga klientët
+    foreach ($read_sockets as $socket) {
+        $data = @socket_read($socket, 1024, PHP_NORMAL_READ);
+        if ($data === false) {
+            // Mbyll lidhjen nëse klienti largohet ose dërgon një sinjal për të përfunduar lidhjen
+            $index = array_search($socket, $client_sockets);
+            unset($client_sockets[$index]);
+            socket_close($socket);
+            echo "Një klient është larguar\n";
+            continue;
+        }
+
+        // Ruaj mesazhin e klientit dhe dërgoje përgjigjen
+        $data = trim($data);
+        if ($data) {
+            echo "Mesazh nga klienti: $data\n";
+            log_request("Mesazh nga klienti: $data");
+
+            // Shkrimi i mesazhit për monitorim
+            file_put_contents($messages_file, "Mesazh nga klienti: $data\n", FILE_APPEND);
+
+            if ($data === "READ_FILE") {
+                // Dërgon përmbajtjen e një file-i te klienti
+                $file_content = file_get_contents("server_file.txt");
+                socket_write($socket, $file_content, strlen($file_content));
+            } elseif ($data === "WRITE_FILE") {
+                // Për klientin me qasje të plotë, shton mesazh në file-in e serverit
+                file_put_contents("server_file.txt", "Shtuar nga klienti me privilegje të plota\n", FILE_APPEND);
+                socket_write($socket, "Shkrimi përfundoi me sukses", 1024);
+            } else {
+                socket_write($socket, "Komanda e panjohur", 1024);
+            }
+        }
+    }
+
 }
 socket_close($server_socket);
 
