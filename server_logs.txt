@@ -28,3 +28,26 @@
 [2024-11-08 22:05:41] Lidhje e re nga klienti me IP: 127.0.0.1
 [2024-11-08 22:05:51] Mesazh nga klienti: READ_FILE
 [2024-11-08 22:06:01] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:14:26] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:14:48] Mesazh nga klienti: READ_FILE
+[2024-11-08 22:18:50] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:19:38] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:20:17] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:20:34] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:21:34] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 22:22:47] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 22:22:49] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-08 22:31:54] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:31:58] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:32:16] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:32:35] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:37:37] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:37:39] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:37:45] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:37:48] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:40:39] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:40:56] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:41:01] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:41:05] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:41:11] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-08 22:41:25] Klienti nga radhë me IP: 127.0.0.1 u pranua
