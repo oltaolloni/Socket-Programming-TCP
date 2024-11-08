@@ -30,8 +30,6 @@ function send_command($socket, $command) {
 // Sample commands to send to the server
 $commands = [
     "READ_FILE\r\n",    // To read the content of server_file.txt
-    "WRITE_FILE\r\n",   // To write to server_file.txt
-    "UNKNOWN_CMD\r\n",  // Invalid command
 ];
 
 foreach ($commands as $command) {
