@@ -192,6 +192,7 @@ while (true) {
                             HELP - Shfaq Komandat\n
                             READ <file>- Lexon nga nje file\n
                             WRITE <file> <Content>- Shkruan ne nje fajll\n
+                            EXEC <command> - ekzekuton kod te sistemit ku operon serveri\n
                             EXIT- E mbyll lidhjen\n", 1024);
                         } else {
                             socket_write($socket, "Komandat e lejuara:\n
