@@ -27,7 +27,6 @@ function send_command($socket, $command) {
         return false;  // Exit the loop if writing failed
     }
     echo "Sent command: $command\n";
-
     // Get the server's response
     $response = socket_read($socket, 1024);
 
