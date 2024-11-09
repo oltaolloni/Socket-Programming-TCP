@@ -69,7 +69,7 @@ while (true) {
                 unset($client_sockets[$index]);
             }
             socket_close($socket);
-            echo "Një klient është larguar\n";
+            echo "\033[0;35mNjë klient është larguar\033[0m\n";
 
             // Menaxho klientët që presin në radhë (dhe prano një nga ata)
             if (!empty($waiting_queue)) {
@@ -90,7 +90,7 @@ while (true) {
         // Ruaj mesazhin e klientit dhe dërgoje përgjigjen
         $data = trim($data);
         if ($data) {
-            echo "Mesazh nga klienti: $data\r\n";
+            echo "Mesazh nga klienti:\033[0;32m $data\033[0m\r\n";
             log_request("Mesazh nga klienti: $data");
 
             // Shkrimi i mesazhit për monitorim
@@ -110,7 +110,7 @@ while (true) {
                         socket_write($socket,"Length: $length",1049);
                         socket_write($socket, $file_content, $length);}
                         else{
-                            socket_write($socket, "Usage: READ filename.txt\n", 1024);
+                            socket_write($socket, "\033[1;33mUsage\033[0m: READ filename.txt\n", 1024);
                         }
                         break;
 
@@ -124,11 +124,11 @@ while (true) {
                             socket_write($socket, $output, $length);
                             }
                             else{
-                                socket_write($socket,"Nuk ke privilegjet e admin\n",1024);
+                                socket_write($socket,"\033[0;31mNuk ke privilegjet e admin\033[0m\n",1024);
                             }
                                 }
                             else{
-                                socket_write($socket, "Usage: EXEC command\n", 1024);
+                                socket_write($socket, "\033[1;33mUsage\033[0m: EXEC command\n", 1024);
                             }
                             break;
 
@@ -143,18 +143,18 @@ while (true) {
                             if (!file_exists($filename)) {
                                 // If the file doesn't exist, create it
                                 file_put_contents($filename, $content . "\n");
-                                socket_write($socket, "File '$filename' was created and content was written.\n", 1024);
+                                socket_write($socket, "Fajlli '$filename' u krijua dhe permbajtja u shenua.\n", 1024);
                             } else {
                                 // If the file exists, append content to it
                                 file_put_contents($filename, $content . "\n", FILE_APPEND);
-                                socket_write($socket, "Content was successfully written to '$filename'.\n", 1024);
+                                socket_write($socket, "Shenimi ne '$filename' u krye me sukses.\n", 1024);
                             }
                         } else {
-                            socket_write($socket, "Nuk keni privilegje te adminit.\n", 1024);
+                            socket_write($socket, "\033[0;31mNuk ke privilegjet e admin\033[0m", 1024);
                         }
                     }
                     else{
-                        socket_write($socket, "Usage: WRITE filename.txt Content\n", 1024);
+                        socket_write($socket, "\033[1;33mUsage\033[0m: WRITE filename.txt Content\n", 1024);
                     }
                         break;
 
@@ -174,9 +174,9 @@ while (true) {
                         } else {
                             if ($code === $admin_code) {
                                 $client_sockets[$index]['isAdmin'] = true;
-                                socket_write($socket, "Tani jeni admin.\n");
+                                socket_write($socket, "\033[0;36m*Tani jeni admin*\033[0m\n");
                             } else {
-                                socket_write($socket, "Invalid SUPER code.\n");
+                                socket_write($socket, "\033[0;31mInvalid SUPER code.\033[0m\n");
                             }
                         }
                         break;
@@ -189,17 +189,17 @@ while (true) {
                     case  "HELP":
                         if ($client_sockets[$index]['isAdmin']) {
                             socket_write($socket, "Komandat e lejuara:\n
-                            HELP - Shfaq Komandat\n
-                            READ <file>- Lexon nga nje file\n
-                            WRITE <file> <Content>- Shkruan ne nje fajll\n
-                            EXEC <command> - ekzekuton kod te sistemit ku operon serveri\n
-                            EXIT- E mbyll lidhjen\n", 1024);
+                            \033[1;33mHELP\033[0m - Shfaq Komandat\n
+                            \033[1;33mREAD <file>\033[0m- Lexon nga nje file\n
+                            \033[1;33mWRITE <file> <Content>\033[0m- Shkruan ne nje fajll\n
+                            \033[1;33mEXEC <command>\033[0m - ekzekuton kod te sistemit ku operon serveri\n
+                            \033[1;33mEXIT\033[0m- E mbyll lidhjen\n", 1024);
                         } else {
                             socket_write($socket, "Komandat e lejuara:\n
-                            HELP - Shfaq Komandat\n
-                            READ <file>- Lexon nga nje file\n
-                            SUPER <ADMIN-CODE>- Ju bene admin nese nuk ka ndonje\n
-                            EXIT- E mbyll lidhjen\n", 1024);
+                            \033[1;33mHELP\033[0m - Shfaq Komandat\n
+                            \033[1;33mREAD <file>\033[0m- Lexon nga nje file\n
+                            \033[1;33mSUPER <ADMIN-CODE>\033[0m- Ju bene admin nese nuk ka ndonje\n
+                            \033[1;33mEXIT\033[0m- E mbyll lidhjen\n", 1024);
                         }
                         break;
 

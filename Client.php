@@ -53,7 +53,7 @@ while($ison){
     if(@$response){
     echo $response;
     }// Sample commands to send to the server
-    echo "Enter Command: ";
+    echo "\033[0;32mEnter Command:\033[0m ";
     $ison=send_command($client_socket,readline()."\r\n");
 
 
