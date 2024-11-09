@@ -83,3 +83,18 @@ Mesazh nga klienti: READ server_logs.txt
 Mesazh nga klienti: READ server_logs.txt
 Mesazh nga klienti: READ server_logs.txt
 Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: READ
+Mesazh nga klienti: HELP
+Mesazh nga klienti: READ <server_file.txt>
+Mesazh nga klienti: READ
+Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: HELP
+Mesazh nga klienti: WRITE server_file.txt
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: WRITE server_file.txt content
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: help
+Mesazh nga klienti: HELP
+Mesazh nga klienti: HELP
+Mesazh nga klienti: HELP
