@@ -209,6 +209,14 @@ while (true) {
                         }
                         break;
 
+                        case  "STATUS":
+                            if (@$client_sockets[$index]['isAdmin']) {
+                                socket_write($socket, "\033[0;36m*Ju jeni admin*\033[0m", 1024);
+                            } else {
+                                socket_write($socket, "\033[1;33m*Ju jeni klient*\033[0m", 1024);
+                            }
+                            break;
+
                     default:
                         socket_write($socket, "Komanda e panjohur\n", 1024);
                         break;

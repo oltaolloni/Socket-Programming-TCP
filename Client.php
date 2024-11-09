@@ -52,7 +52,12 @@ function send_command($socket, $command) {
 $ison=true;
 while($ison){
     echo "\033[0;32mEnter Command:\033[0m ";
-    $ison=send_command($client_socket,readline()."\r\n");
+    $command=readline();
+    if (trim($command) === '') {
+        $ison = send_command($client_socket, "STATUS\n");
+    }else{
+    $ison=send_command($client_socket,$command."\r\n");
+    }
 
 
 }
