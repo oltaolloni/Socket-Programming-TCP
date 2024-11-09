@@ -19,25 +19,9 @@ echo "Connected to server at $server_ip:$server_port\n";
 
 // Function to send a command to the server
 function send_command($socket, $command) {
-    $commands=[
-    "READ_FILE",
-    "EXIT",
-    "HELP"
-];
-    if (!in_array(trim($command),$commands)){
-        echo "This command does not exist.\n";
-        return true;
-    }
-    if (trim($command) === "EXIT"){
-        return false;
-    }
-    if (trim($command) === "HELP"){
-        echo "\nYou are a normal client you can use these commands:\n";
-        echo "1. READ_FILE: This reads a file in the servers system. \n\n";
-        return true;
-    }
+    
 
-    $write_result = @socket_write($socket, $command, strlen($command));
+    $write_result = socket_write($socket, $command, strlen($command));
     if ($write_result === false) {
         echo "Failed to send command, the server might have disconnected.\n";
         return false;  // Exit the loop if writing failed
@@ -45,22 +29,27 @@ function send_command($socket, $command) {
     echo "Sent command: $command\n";
 
     // Get the server's response
-    $response = @socket_read($socket, 1024);
+    $response = socket_read($socket, 1024);
 
     if ($response === false || $response === '') {
         echo "Server has disconnected.\n";
         return false;
     }
 
+    
     echo "Server response: $response\n";
+    if (trim($response) === "EXIT"){
+        return false;
+    }
 
     sleep(1); 
     return true;
 }
 $ison=true;
 while($ison){
-echo $response;
-// Sample commands to send to the server
+    if(@$response){
+    echo $response;
+    }// Sample commands to send to the server
     echo "Enter Command: ";
     $ison=send_command($client_socket,readline()."\r\n");
 

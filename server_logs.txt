@@ -67,3 +67,78 @@
 [2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
 [2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
 [2024-11-08 23:18:35] Mesazh nga klienti: READ_FILE
+[2024-11-09 12:29:34] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:32:51] New connection from client with IP: 127.0.0.1
+[2024-11-09 12:33:37] New connection from client with IP: 127.0.0.1
+[2024-11-09 12:34:14] New connection from client with IP: 127.0.0.1
+[2024-11-09 12:34:27] Message from client: EXIT
+[2024-11-09 12:35:37] New connection from client with IP: 127.0.0.1
+[2024-11-09 12:35:40] Message from client: EXIT
+[2024-11-09 12:36:20] New connection from client with IP: 127.0.0.1
+[2024-11-09 12:36:23] Message from client: EXIT
+[2024-11-09 12:39:53] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:41:27] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:43:19] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:44:20] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:45:02] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:45:42] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:45:47] Mesazh nga klienti: EXIT
+[2024-11-09 12:50:25] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:50:28] Mesazh nga klienti: EXIT
+[2024-11-09 12:57:40] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:57:50] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 12:58:45] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 12:58:51] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 12:59:40] Mesazh nga klienti: EXIT
+[2024-11-09 13:01:35] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:04:08] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:07:02] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:08:01] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:09:27] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:10:03] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:10:36] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:12:20] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:14:04] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:16:21] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:16:49] New connection from IP: 127.0.0.1
+[2024-11-09 13:17:39] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:17:55] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:18:00] Mesazh nga klienti: HELP
+[2024-11-09 13:18:05] Mesazh nga klienti: EXIT
+[2024-11-09 13:23:22] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:25:43] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:25:49] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:25:54] Mesazh nga klienti: READ_FILE
+[2024-11-09 13:26:00] Mesazh nga klienti: WRITE_FILE
+[2024-11-09 13:26:06] Mesazh nga klienti: READ_FILE
+[2024-11-09 13:26:10] Mesazh nga klienti: EXIT
+[2024-11-09 13:27:37] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:27:48] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:27:55] Mesazh nga klienti: EXIT
+[2024-11-09 13:33:50] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:33:55] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:34:00] Mesazh nga klienti: EXIT
+[2024-11-09 13:34:14] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:36:00] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:36:06] Mesazh nga klienti: READ_FILE
+[2024-11-09 13:36:11] Mesazh nga klienti: EXIT
+[2024-11-09 13:38:11] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:38:15] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:42:01] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:42:40] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:43:03] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:43:16] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:43:45] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:45:33] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:46:28] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:46:34] Mesazh nga klienti: READ_FILE
+[2024-11-09 13:46:41] Mesazh nga klienti: SUPER RANDOM12
+[2024-11-09 13:46:48] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:48:46] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:48:53] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:48:56] Mesazh nga klienti: EXIT
+[2024-11-09 13:49:10] Lidhje e re nga klienti me IP: 
+[2024-11-09 13:49:14] Mesazh nga klienti: WRITE_FILE
+[2024-11-09 13:49:21] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 13:49:26] Mesazh nga klienti: WRITE_FILE
+[2024-11-09 13:49:53] Mesazh nga klienti: EXIT

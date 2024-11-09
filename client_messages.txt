@@ -21,3 +21,35 @@ Mesazh nga klienti: READ_FILE
 Mesazh nga klienti: READ_FILE
 Mesazh nga klienti: READ_FILE
 Mesazh nga klienti: READ_FILE
+Message from client: EXIT
+Message from client: EXIT
+Message from client: EXIT
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: HELP
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: WRITE_FILE
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: SUPER RANDOM12
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: WRITE_FILE
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: WRITE_FILE
+Mesazh nga klienti: EXIT

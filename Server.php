@@ -7,6 +7,7 @@ $client_sockets = []; // Lista e klientëve të lidhur
 $waiting_queue = []; // Lista e klientëve që presin për të u lidhur
 $log_file = "server_logs.txt";
 $messages_file = 'client_messages.txt';
+$admin_code="RANDOM123";
 
 // Krijimi i socket-it të serverit
 $server_socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -28,7 +29,7 @@ function log_request($message) {
 
 while (true) {
     // Kontrollon për lidhje të reja dhe pranimin e tyre
-    $read_sockets = $client_sockets;
+    $read_sockets = array_column($client_sockets, 'socket');
     $read_sockets[] = $server_socket;
     $write = null;
     $except = null;
@@ -41,38 +42,46 @@ while (true) {
         $new_socket = socket_accept($server_socket);
         if ($new_socket && count($client_sockets) < $max_clients) {
             // Prano klientin dhe e shto në listën e klientëve të lidhur
-            $client_sockets[] = $new_socket;
-            $client_ip = '';
-            socket_getpeername($new_socket, $client_ip);
-            echo "Lidhje e re nga klienti me IP: $client_ip\n";
-            log_request("Lidhje e re nga klienti me IP: $client_ip");
+            $client_sockets[] = [
+                'socket' => $new_socket,
+                'isAdmin' => false,
+                'ip' => ''
+            ];
+            socket_getpeername($new_socket, $client_sockets[count($client_sockets)-1]['ip']);
+            echo "Lidhje e re nga klienti me IP: " . $client_sockets[count($client_sockets)-1]['ip'] . "\n";
+            log_request("Lidhje e re nga klienti me IP: " . $client_sockets[count($client_sockets)-1]['ip']);
         } else {
             // Nëse serveri është i plotë, shto klientin në radhën e pritjes
             $waiting_queue[] = $new_socket;
             echo "Serveri është i plotë, lidhja u shtua në radhën e pritjes\n";
-            socket_write($new_socket,"Serveri eshte plote. Jeni vendosur ne pritje",1049);
+            socket_write($new_socket, "Serveri eshte plote. Jeni vendosur ne pritje", 1049);
         }
         unset($read_sockets[array_search($server_socket, $read_sockets)]);
     }
 
     // Menaxhon mesazhet e dërguara nga klientët
     foreach ($read_sockets as $socket) {
-        $data = socket_read($socket, 1024, PHP_NORMAL_READ);
+        $data = @socket_read($socket, 1024, PHP_NORMAL_READ);
         if ($data === false) {
             // Mbyll lidhjen nëse klienti largohet ose dërgon një sinjal për të përfunduar lidhjen
-            $index = array_search($socket, $client_sockets);
-            unset($client_sockets[$index]);
+            $index = array_search($socket, array_column($client_sockets, 'socket'));
+            if ($index !== false) {
+                unset($client_sockets[$index]);
+            }
             socket_close($socket);
             echo "Një klient është larguar\n";
 
             // Menaxho klientët që presin në radhë (dhe prano një nga ata)
             if (!empty($waiting_queue)) {
                 $next_socket = array_shift($waiting_queue); // Merr klientin e parë në radhë
-                $client_sockets[] = $next_socket;
-                $client_ip = '';
-                socket_getpeername($next_socket, $client_ip);
-                echo "Klienti nga radhë me IP: $client_ip u pranua\n";
-                log_request("Klienti nga radhë me IP: $client_ip u pranua");
+                $client_sockets[] = [
+                    'socket' => $next_socket,
+                    'isAdmin' => false,
+                    'ip' => ''
+                ];
+                socket_getpeername($next_socket, $client_sockets[count($client_sockets)-1]['ip']);
+                echo "Klienti nga radhë me IP: " . $client_sockets[count($client_sockets)-1]['ip'] . " u pranua\n";
+                log_request("Klienti nga radhë me IP: " . $client_sockets[count($client_sockets)-1]['ip'] . " u pranua");
             }
 
             continue;
@@ -86,21 +95,47 @@ while (true) {
 
             // Shkrimi i mesazhit për monitorim
             file_put_contents($messages_file, "Mesazh nga klienti: $data\r\n", FILE_APPEND);
+            $index = array_search($socket, array_column($client_sockets, 'socket'));
+            if ($index !== false) {
+                switch ($data) {
+                    case  "READ_FILE":
+                        $file_content = file_get_contents("server_file.txt") . "\r\n";
+                        socket_write($socket, $file_content, strlen($file_content));
+                        break;
 
-            if ($data === "READ_FILE") {
-                // Dërgon përmbajtjen e një file-i te klienti
-                $file_content = file_get_contents("server_file.txt")."\r\n";
-                socket_write($socket, $file_content, strlen($file_content));
-            } elseif ($data === "WRITE_FILE") {
-                // Për klientin me qasje të plotë, shton mesazh në file-in e serverit
-                file_put_contents("server_file.txt", "Shtuar nga klienti me privilegje të plota\n", FILE_APPEND);
-                socket_write($socket, "Shkrimi përfundoi me sukses", 1024);
-            } else {
-                socket_write($socket, "Komanda e panjohur", 1024);
+                    case  "WRITE_FILE":
+                        if ($client_sockets[$index]['isAdmin']) {
+                            file_put_contents("server_file.txt", "Shkrim nga Admini\n", FILE_APPEND);
+                            socket_write($socket, "Shkrimi u be me sukses\n", 1024);
+                        } else {
+                            socket_write($socket, "Nuk keni privilegje te adminit.\n", 1024);
+                        }
+                        break;
+
+                    case preg_match('/^SUPER\s+(\S+)$/', $data, $matches) === 1:
+                        $code = $matches[1];
+                        if ($code === $admin_code) {
+                            $client_sockets[$index]['isAdmin'] = true;
+                            socket_write($socket, "Tani jeni admin.\n");
+                        } else {
+                            socket_write($socket, "Invalid SUPER code.\n");
+                        }
+                        break;
+
+                    case "EXIT":
+                        socket_write($socket, "EXIT\n");
+                        echo "Client has been disconnected due to EXIT command\n";
+                        break;
+
+                    default:
+                        socket_write($socket, "Komanda e panjohur\n", 1024);
+                        break;
+                }
             }
         }
     }
 }
 
 socket_close($server_socket);
+
 ?>
