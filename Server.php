@@ -57,11 +57,13 @@ while (true) {
 
     // Menaxhon mesazhet e dërguara nga klientët
     foreach ($read_sockets as $socket) {
-        $data = socket_read($socket, 1024, PHP_NORMAL_READ);
+        $data = @socket_read($socket, 1024, PHP_NORMAL_READ);
         if ($data === false) {
             // Mbyll lidhjen nëse klienti largohet ose dërgon një sinjal për të përfunduar lidhjen
             $index = array_search($socket, $client_sockets);
-            unset($client_sockets[$index]);
+            if ($index !== false) {
+                unset($client_sockets[$index]);
+            }
             socket_close($socket);
             echo "Një klient është larguar\n";
 

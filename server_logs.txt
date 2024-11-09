@@ -67,3 +67,8 @@
 [2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
 [2024-11-08 23:18:35] Klienti nga radhë me IP: 127.0.0.1 u pranua
 [2024-11-08 23:18:35] Mesazh nga klienti: READ_FILE
+[2024-11-09 13:37:52] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:38:29] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:40:55] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:43:21] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 13:46:48] Lidhje e re nga klienti me IP: 127.0.0.1

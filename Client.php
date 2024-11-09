@@ -43,7 +43,6 @@ function send_command($socket, $command) {
         return false;  // Exit the loop if writing failed
     }
     echo "Sent command: $command\n";
-
     // Get the server's response
     $response = @socket_read($socket, 1024);
 
@@ -59,7 +58,7 @@ function send_command($socket, $command) {
 }
 $ison=true;
 while($ison){
-echo $response;
+// echo $response;
 // Sample commands to send to the server
     echo "Enter Command: ";
     $ison=send_command($client_socket,readline()."\r\n");
