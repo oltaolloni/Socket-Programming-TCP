@@ -12,6 +12,7 @@ Për të ekzekutuar këtë program, duhet të keni **XAMPP** të instaluar dhe *
 3. Kërkoni për linjën që thotë `;extension=sockets` dhe hiqni **pikën e presjes** (`;`) para saj për ta aktivizuar rreshtin:
    extension=sockets
 4. Pasi ta keni ndryshuar, ruani skedarin php.ini dhe ristartoni XAMPP
+5. Pathi ku kemi të instaluar PHP shembull `xampp\php` duhet shtuar në Environment Variables të sistemit
 
 ### 2. Komanda për Ekzekutimin e Serverit dhe Klientëve
 Pasi të keni konfigurimin e nevojshëm, mund të ekzekutoni programin në komandën cmd.
