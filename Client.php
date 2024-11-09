@@ -9,22 +9,18 @@ if ($client_socket === false) {
     die("Failed to create socket: " . socket_strerror(socket_last_error()) . "\n");
 }
 
-echo "Connecting to server...\n";
+echo "Duke u kyqur ne server...\n";
 $connection = socket_connect($client_socket, $server_ip, $server_port);
 
 if ($connection === false) {
     die("Unable to connect to server: " . socket_strerror(socket_last_error()) . "\n");
 }
 
-echo "Connected to server at $server_ip:$server_port\n";
+echo "Te lidhur ne serverin $server_ip:$server_port\n";
+
 
 // Function to send a command to the server
 function send_command($socket, $command) {
-    
-    if (!is_resource($socket) || socket_last_error($socket) != 0) {
-        echo "\033[0;31mLidhja me serverin eshte terminuar.\033[0m\n";
-        return false;
-    }
 
     $write_result = socket_write($socket, $command, strlen($command));
     if ($write_result === false) {
@@ -55,9 +51,6 @@ function send_command($socket, $command) {
 }
 $ison=true;
 while($ison){
-    if(@$response){
-    echo $response;
-    }// Sample commands to send to the server
     echo "\033[0;32mEnter Command:\033[0m ";
     $ison=send_command($client_socket,readline()."\r\n");
 
