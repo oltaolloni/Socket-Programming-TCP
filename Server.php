@@ -137,11 +137,6 @@ while (true) {
 
                     case "EXIT":
                         socket_write($socket, "EXIT\n");
-                        if ($client_sockets[$index]['isAdmin']) {
-                            foreach ($client_sockets as $client) {
-                                socket_write($client['socket'],"Admin eshte larguar. Mund te beheni Admin me komanden SUPER.\n",1049);
-                            }
-                        } 
                         echo "Client has been disconnected due to EXIT command\n";
                         break;
                     
