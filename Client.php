@@ -21,10 +21,14 @@ echo "Connected to server at $server_ip:$server_port\n";
 // Function to send a command to the server
 function send_command($socket, $command) {
     
+    if (!is_resource($socket) || socket_last_error($socket) != 0) {
+        echo "\033[0;31mLidhja me serverin eshte terminuar.\033[0m\n";
+        return false;
+    }
 
     $write_result = socket_write($socket, $command, strlen($command));
     if ($write_result === false) {
-        echo "Failed to send command, the server might have disconnected.\n";
+        echo "\033[0;31mKomanda deshtoj ne dergim. Serveri mund te jete ndalur\033[0m\n";
         return false;  // Exit the loop if writing failed
     }
     $length=1049;
@@ -32,7 +36,7 @@ function send_command($socket, $command) {
     $response = socket_read($socket,$length);
 
     if ($response === false || $response === '') {
-        echo "Server has disconnected.\n";
+        echo "\033[0;31mServeri u qkyq.\033[0m\n";
         return false;
     }
 
@@ -61,6 +65,6 @@ while($ison){
 }
 
 socket_close($client_socket);
-echo "Connection closed.\n";
+echo "\033[0;35mLidhja u mbyll\033[0m\n";
 
 ?>
