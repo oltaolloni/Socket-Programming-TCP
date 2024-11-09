@@ -22,7 +22,7 @@ echo "Te lidhur ne serverin $server_ip:$server_port\n";
 // Function to send a command to the server
 function send_command($socket, $command) {
 
-    $write_result = socket_write($socket, $command, strlen($command));
+    $write_result = @socket_write($socket, $command, strlen($command));
     if ($write_result === false) {
         echo "\033[0;31mKomanda deshtoj ne dergim. Serveri mund te jete ndalur\033[0m\n";
         return false;  // Exit the loop if writing failed
