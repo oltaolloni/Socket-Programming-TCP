@@ -142,3 +142,14 @@
 [2024-11-09 13:49:21] Mesazh nga klienti: SUPER RANDOM123
 [2024-11-09 13:49:26] Mesazh nga klienti: WRITE_FILE
 [2024-11-09 13:49:53] Mesazh nga klienti: EXIT
+[2024-11-09 14:12:44] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:12:47] Mesazh nga klienti: HELP
+[2024-11-09 14:13:02] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 14:13:05] Mesazh nga klienti: HELP
+[2024-11-09 14:13:12] Mesazh nga klienti: EXIT
+[2024-11-09 14:20:35] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:20:42] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 14:20:51] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:21:05] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 14:21:16] Mesazh nga klienti: EXIT
+[2024-11-09 14:21:24] Mesazh nga klienti: READ_FILE

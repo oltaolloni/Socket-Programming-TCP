@@ -114,17 +114,51 @@ while (true) {
 
                     case preg_match('/^SUPER\s+(\S+)$/', $data, $matches) === 1:
                         $code = $matches[1];
-                        if ($code === $admin_code) {
-                            $client_sockets[$index]['isAdmin'] = true;
-                            socket_write($socket, "Tani jeni admin.\n");
+                        // Check if there's already an admin
+                        $admin_exists = false;
+                        foreach ($client_sockets as $client) {
+                            if ($client['isAdmin']) {
+                                $admin_exists = true;
+                                break;
+                            }
+                        }
+
+                        if ($admin_exists) {
+                            socket_write($socket, "Nuk mund te kete dy admins.\n");
                         } else {
-                            socket_write($socket, "Invalid SUPER code.\n");
+                            if ($code === $admin_code) {
+                                $client_sockets[$index]['isAdmin'] = true;
+                                socket_write($socket, "Tani jeni admin.\n");
+                            } else {
+                                socket_write($socket, "Invalid SUPER code.\n");
+                            }
                         }
                         break;
 
                     case "EXIT":
                         socket_write($socket, "EXIT\n");
+                        if ($client_sockets[$index]['isAdmin']) {
+                            foreach ($client_sockets as $client) {
+                                socket_write($client['socket'],"Admin eshte larguar. Mund te beheni Admin me komanden SUPER.\n",1049);
+                            }
+                        } 
                         echo "Client has been disconnected due to EXIT command\n";
+                        break;
+                    
+                    case  "HELP":
+                        if ($client_sockets[$index]['isAdmin']) {
+                            socket_write($socket, "Komandat e lejuara:\n
+                            HELP - Shfaq Komandat\n
+                            READ_FILE- Lexon nga nje file\n
+                            WRITE_FILE- Shkruan ne nje fajll\n
+                            EXIT- E mbyll lidhjen\n", 1024);
+                        } else {
+                            socket_write($socket, "Komandat e lejuara:\n
+                            HELP - Shfaq Komandat\n
+                            READ_FILE- Lexon nga nje file\n
+                            SUPER <ADMIN-CODE>- Ju bene admin nese nuk ka ndonje\n
+                            EXIT- E mbyll lidhjen\n", 1024);
+                        }
                         break;
 
                     default:
