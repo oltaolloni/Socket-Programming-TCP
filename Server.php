@@ -68,27 +68,27 @@ while (true) {
         if ($data === false) {
             // Mbyll lidhjen nëse klienti largohet ose dërgon një sinjal për të përfunduar lidhjen
             $index = array_search($socket, array_column($client_sockets, 'socket'));
-            if ($index !== false) {
+            if ($index !== false) { 
                 unset($client_sockets[$index]);
-            }
-            socket_close($socket);
-            echo "\033[0;35mNjë klient është larguar\033[0m\n";
+                $client_sockets = array_values($client_sockets); // Reindex to avoid gaps
+                echo "\033[0;35mNjë klient është larguar\033[0m\n";
+                log_request("Një klient është larguar");
 
-            // Menaxho klientët që presin në radhë (dhe prano një nga ata)
-            if (!empty($waiting_queue)) {
-                $next_socket = array_shift($waiting_queue); // Merr klientin e parë në radhë
-                $client_sockets[] = [
-                    'socket' => $next_socket,
-                    'isAdmin' => false,
-                    'ip' => ''
-                ];
-                socket_getpeername($next_socket, $client_sockets[count($client_sockets)-1]['ip']);
-                echo "Klienti nga radhë me IP: " . $client_sockets[count($client_sockets)-1]['ip'] . " u pranua\n";
-                log_request("Klienti nga radhë me IP: " . $client_sockets[count($client_sockets)-1]['ip'] . " u pranua");
+                // Handle waiting queue by accepting the next client if there is space
+                if (!empty($waiting_queue)) {
+                    $next_socket = array_shift($waiting_queue); // Get the first client in queue
+                    $client_sockets[] = [
+                        'socket' => $next_socket,
+                        'isAdmin' => false,
+                        'ip' => ''
+                    ];
+                    socket_getpeername($next_socket, $client_sockets[count($client_sockets) - 1]['ip']);
+                    echo "Klienti nga radhë me IP: " . $client_sockets[count($client_sockets) - 1]['ip'] . " u pranua\n";
+                    log_request("Klienti nga radhë me IP: " . $client_sockets[count($client_sockets) - 1]['ip'] . " u pranua");
+                }
             }
-
-            continue;
-        }
+            socket_close($socket); // Close the socket after removing from the array
+                    }
 
         // Ruaj mesazhin e klientit dhe dërgoje përgjigjen
         $data = trim($data);
