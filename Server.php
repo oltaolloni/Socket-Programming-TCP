@@ -98,15 +98,24 @@ while (true) {
             $index = array_search($socket, array_column($client_sockets, 'socket'));
             if ($index !== false) {
                 switch ($data) {
-                    case  preg_match('/^READ\s+(\S+).txt$/', $data, $matches) === 1:
+                    case  preg_match('/^READ/', $data, $matches) === 1:
+                        if(preg_match('/^READ\s+(\S+).txt$/', $data, $matches) === 1){
                         $file= $matches[1].".txt";
+                        if(!file_exists($file)){
+                            socket_write($socket,"File nuk u gjet\n",1049);
+                            break;
+                        }
                         $file_content = file_get_contents($file) . "\r\n";
                         $length = strlen($file_content);
                         socket_write($socket,"Length: $length",1049);
-                        socket_write($socket, $file_content, $length);
+                        socket_write($socket, $file_content, $length);}
+                        else{
+                            socket_write($socket, "Usage: READ filename.txt\n", 1024);
+                        }
                         break;
 
-                    case preg_match('/^WRITE\s+(\S+)\.txt\s+([\s\S]+)$/', $data, $matches) === 1:
+                    case preg_match('/^WRITE/', $data, $matches) === 1:
+                        if ( preg_match('/^WRITE\s+(\S+)\.txt\s+([\s\S]+)$/', $data, $matches) === 1){
                         $filename = $matches[1] . '.txt';  // Get the filename from the regex capture
                         $content = $matches[2];  // Get the content to write
                     
@@ -125,6 +134,10 @@ while (true) {
                         } else {
                             socket_write($socket, "Nuk keni privilegje te adminit.\n", 1024);
                         }
+                    }
+                    else{
+                        socket_write($socket, "Usage: WRITE filename.txt Content\n", 1024);
+                    }
                         break;
 
                     case preg_match('/^SUPER\s+(\S+)$/', $data, $matches) === 1:
