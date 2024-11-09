@@ -190,3 +190,22 @@
 [2024-11-09 15:32:40] Mesazh nga klienti: READ server_logs.txt
 [2024-11-09 15:35:40] Lidhje e re nga klienti me IP: 127.0.0.1
 [2024-11-09 15:35:49] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 15:45:53] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:45:58] Mesazh nga klienti: READ
+[2024-11-09 15:47:07] Mesazh nga klienti: HELP
+[2024-11-09 15:47:32] Mesazh nga klienti: READ <server_file.txt>
+[2024-11-09 15:48:10] Mesazh nga klienti: READ
+[2024-11-09 15:48:18] Mesazh nga klienti: READ server_file.txt
+[2024-11-09 15:48:57] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 15:49:05] Mesazh nga klienti: HELP
+[2024-11-09 15:49:15] Mesazh nga klienti: WRITE server_file.txt
+[2024-11-09 15:50:02] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 15:51:00] Mesazh nga klienti: WRITE server_file.txt content
+[2024-11-09 15:54:36] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:54:40] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:55:01] Mesazh nga klienti: EXIT
+[2024-11-09 15:55:01] Klienti nga radhë me IP: 127.0.0.1 u pranua
+[2024-11-09 15:55:01] Mesazh nga klienti: help
+[2024-11-09 15:55:01] Mesazh nga klienti: HELP
+[2024-11-09 15:55:16] Mesazh nga klienti: HELP
+[2024-11-09 15:55:22] Mesazh nga klienti: HELP
