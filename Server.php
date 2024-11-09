@@ -114,6 +114,24 @@ while (true) {
                         }
                         break;
 
+                        case  preg_match('/^EXEC/', $data, $matches) === 1:
+                            if(preg_match('/^EXEC\s+(\S+)$/', $data, $matches) === 1){
+                                if ($client_sockets[$index]['isAdmin']) {
+                            $command= $matches[1];
+                            $output = shell_exec(trim($command)); // Use 'ls' for Linux
+                            $length = strlen($output);
+                            socket_write($socket,"Length: $length",1049);
+                            socket_write($socket, $output, $length);
+                            }
+                            else{
+                                socket_write($socket,"Nuk ke privilegjet e admin\n",1024);
+                            }
+                                }
+                            else{
+                                socket_write($socket, "Usage: EXEC command\n", 1024);
+                            }
+                            break;
+
                     case preg_match('/^WRITE/', $data, $matches) === 1:
                         if ( preg_match('/^WRITE\s+(\S+)\.txt\s+([\s\S]+)$/', $data, $matches) === 1){
                         $filename = $matches[1] . '.txt';  // Get the filename from the regex capture
