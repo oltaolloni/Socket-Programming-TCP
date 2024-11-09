@@ -1,6 +1,9 @@
 <?php
 
-$server_ip = "127.0.0.1";
+// echo "\033[0;36mEnter Server IP:\033[0m ";
+// $server_ip = readline();
+$server_ip='127.0.0.1';
+// $server_port = rand(10000, 65535);
 $server_port = 12345;
 $max_clients = 4;  // Maksimumi i klientëve që mund të lidhen në të njëjtën kohë
 $client_sockets = []; // Lista e klientëve të lidhur
@@ -41,14 +44,14 @@ while (true) {
     if (in_array($server_socket, $read_sockets)) {
         $new_socket = socket_accept($server_socket);
         if ($new_socket && count($client_sockets) < $max_clients) {
-            // Prano klientin dhe e shto në listën e klientëve të lidhur
+            $client_ip = '';
+            socket_getpeername($new_socket, $client_ip); // Retrieve client IP
             $client_sockets[] = [
                 'socket' => $new_socket,
                 'isAdmin' => false,
-                'ip' => ''
+                'ip' => $client_ip
             ];
-            socket_getpeername($new_socket, $client_sockets[count($client_sockets)-1]['ip']);
-            echo "Lidhje e re nga klienti me IP: " . $client_sockets[count($client_sockets)-1]['ip'] . "\n";
+            echo "\033[0;36mLidhje e re nga klienti me IP:\033[0m " . $client_sockets[count($client_sockets)-1]['ip'] . "\n";
             log_request("Lidhje e re nga klienti me IP: " . $client_sockets[count($client_sockets)-1]['ip']);
         } else {
             // Nëse serveri është i plotë, shto klientin në radhën e pritjes
@@ -116,17 +119,17 @@ while (true) {
 
                         case  preg_match('/^EXEC/', $data, $matches) === 1:
                             if(preg_match('/^EXEC\s+(\S+)$/', $data, $matches) === 1){
-                                if ($client_sockets[$index]['isAdmin']) {
-                            $command= $matches[1];
-                            $output = shell_exec(trim($command)); // Use 'ls' for Linux
-                            $length = strlen($output);
-                            socket_write($socket,"Length: $length",1049);
-                            socket_write($socket, $output, $length);
-                            }
-                            else{
-                                socket_write($socket,"\033[0;31mNuk ke privilegjet e admin\033[0m\n",1024);
-                            }
+                                if (@$client_sockets[$index]['isAdmin']) {
+                                    $command= $matches[1];
+                                    $output = shell_exec(trim($command)); // Use 'ls' for Linux
+                                    $length = strlen($output);
+                                    socket_write($socket,"Length: $length",1049);
+                                    socket_write($socket, $output, $length);
                                 }
+                                else{
+                                    socket_write($socket,"\033[0;31mNuk ke privilegjet e admin\033[0m\n",1024);
+                                }
+                            }
                             else{
                                 socket_write($socket, "\033[1;33mUsage\033[0m: EXEC command\n", 1024);
                             }
@@ -138,7 +141,7 @@ while (true) {
                         $content = $matches[2];  // Get the content to write
                     
                         // Check if the user is an admin
-                        if ($client_sockets[$index]['isAdmin']) {
+                        if (@$client_sockets[$index]['isAdmin']) {
                             // Check if the file exists
                             if (!file_exists($filename)) {
                                 // If the file doesn't exist, create it
@@ -183,11 +186,14 @@ while (true) {
 
                     case "EXIT":
                         socket_write($socket, "EXIT\n");
-                        echo "Client has been disconnected due to EXIT command\n";
+                        unset($client_sockets[$index]);
+                        $client_sockets = array_values($client_sockets); // Reindex array to avoid gaps
+                        socket_close($socket);
+                        echo "\033[0;35mKlienti u largua me komanden EXIT\033[0m\n";
                         break;
                     
                     case  "HELP":
-                        if ($client_sockets[$index]['isAdmin']) {
+                        if (@$client_sockets[$index]['isAdmin']) {
                             socket_write($socket, "Komandat e lejuara:\n
                             \033[1;33mHELP\033[0m - Shfaq Komandat\n
                             \033[1;33mREAD <file>\033[0m- Lexon nga nje file\n

@@ -1,7 +1,8 @@
 <?php
-
-$server_ip = "127.0.0.1";
-$server_port = 12345;
+echo "\033[0;36mEnter Server IP:\033[0m ";
+$server_ip = readline();
+echo "\033[0;36mEnter Port:\033[0m ";
+$server_port = readline();
 $client_socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
 if ($client_socket === false) {
