@@ -98,15 +98,30 @@ while (true) {
             $index = array_search($socket, array_column($client_sockets, 'socket'));
             if ($index !== false) {
                 switch ($data) {
-                    case  "READ_FILE":
-                        $file_content = file_get_contents("server_file.txt") . "\r\n";
-                        socket_write($socket, $file_content, strlen($file_content));
+                    case  preg_match('/^READ\s+(\S+).txt$/', $data, $matches) === 1:
+                        $file= $matches[1].".txt";
+                        $file_content = file_get_contents($file) . "\r\n";
+                        $length = strlen($file_content);
+                        socket_write($socket,"Length: $length",1049);
+                        socket_write($socket, $file_content, $length);
                         break;
 
-                    case  "WRITE_FILE":
+                    case preg_match('/^WRITE\s+(\S+)\.txt\s+([\s\S]+)$/', $data, $matches) === 1:
+                        $filename = $matches[1] . '.txt';  // Get the filename from the regex capture
+                        $content = $matches[2];  // Get the content to write
+                    
+                        // Check if the user is an admin
                         if ($client_sockets[$index]['isAdmin']) {
-                            file_put_contents("server_file.txt", "Shkrim nga Admini\n", FILE_APPEND);
-                            socket_write($socket, "Shkrimi u be me sukses\n", 1024);
+                            // Check if the file exists
+                            if (!file_exists($filename)) {
+                                // If the file doesn't exist, create it
+                                file_put_contents($filename, $content . "\n");
+                                socket_write($socket, "File '$filename' was created and content was written.\n", 1024);
+                            } else {
+                                // If the file exists, append content to it
+                                file_put_contents($filename, $content . "\n", FILE_APPEND);
+                                socket_write($socket, "Content was successfully written to '$filename'.\n", 1024);
+                            }
                         } else {
                             socket_write($socket, "Nuk keni privilegje te adminit.\n", 1024);
                         }
@@ -144,13 +159,13 @@ while (true) {
                         if ($client_sockets[$index]['isAdmin']) {
                             socket_write($socket, "Komandat e lejuara:\n
                             HELP - Shfaq Komandat\n
-                            READ_FILE- Lexon nga nje file\n
-                            WRITE_FILE- Shkruan ne nje fajll\n
+                            READ <file>- Lexon nga nje file\n
+                            WRITE <file> <Content>- Shkruan ne nje fajll\n
                             EXIT- E mbyll lidhjen\n", 1024);
                         } else {
                             socket_write($socket, "Komandat e lejuara:\n
                             HELP - Shfaq Komandat\n
-                            READ_FILE- Lexon nga nje file\n
+                            READ <file>- Lexon nga nje file\n
                             SUPER <ADMIN-CODE>- Ju bene admin nese nuk ka ndonje\n
                             EXIT- E mbyll lidhjen\n", 1024);
                         }

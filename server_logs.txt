@@ -153,3 +153,40 @@
 [2024-11-09 14:21:05] Mesazh nga klienti: SUPER RANDOM123
 [2024-11-09 14:21:16] Mesazh nga klienti: EXIT
 [2024-11-09 14:21:24] Mesazh nga klienti: READ_FILE
+[2024-11-09 14:41:49] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:42:04] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 14:42:49] Mesazh nga klienti: READ client_messages.txt
+[2024-11-09 14:43:59] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:44:09] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 14:45:06] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:45:21] Mesazh nga klienti: READ client_messages.txt
+[2024-11-09 14:46:01] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:46:11] Mesazh nga klienti: READ client_messages.txt
+[2024-11-09 14:48:00] Mesazh nga klienti: EXIT
+[2024-11-09 14:48:05] Mesazh nga klienti: EXIT
+[2024-11-09 14:48:09] Mesazh nga klienti: EXIT
+[2024-11-09 14:48:12] Lidhje e re nga klienti me IP: 
+[2024-11-09 14:48:23] Mesazh nga klienti: READ client_messages.txt
+[2024-11-09 14:48:30] Mesazh nga klienti: EXIT
+[2024-11-09 14:57:54] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:58:09] Mesazh nga klienti: WRITE newFile.txt Hello there
+[2024-11-09 14:58:47] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 14:59:02] Mesazh nga klienti: WRITE newfile.txt Hello World
+[2024-11-09 15:02:57] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:03:09] Mesazh nga klienti: WRITE myFile.txt Hello World
+[2024-11-09 15:04:03] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:04:15] Mesazh nga klienti: WRITE newFile.txt Hello world
+[2024-11-09 15:04:23] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-09 15:04:38] Mesazh nga klienti: WRITE newfile.txt Hello World!
+[2024-11-09 15:06:22] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:06:33] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 15:10:39] Mesazh nga klienti: WRITE newFile.txt HELLO OLT
+[2024-11-09 15:29:53] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:30:08] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 15:31:29] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:31:39] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 15:32:07] Lidhje e re nga klienti me IP: 
+[2024-11-09 15:32:28] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:32:40] Mesazh nga klienti: READ server_logs.txt
+[2024-11-09 15:35:40] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-09 15:35:49] Mesazh nga klienti: READ server_logs.txt

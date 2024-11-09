@@ -61,3 +61,25 @@ Mesazh nga klienti: SUPER RANDOM123
 Mesazh nga klienti: SUPER RANDOM123
 Mesazh nga klienti: EXIT
 Mesazh nga klienti: READ_FILE
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: READ client_messages.txt
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: READ client_messages.txt
+Mesazh nga klienti: READ client_messages.txt
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: READ client_messages.txt
+Mesazh nga klienti: EXIT
+Mesazh nga klienti: WRITE newFile.txt Hello there
+Mesazh nga klienti: WRITE newfile.txt Hello World
+Mesazh nga klienti: WRITE myFile.txt Hello World
+Mesazh nga klienti: WRITE newFile.txt Hello world
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: WRITE newfile.txt Hello World!
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: WRITE newFile.txt HELLO OLT
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: READ server_logs.txt
