@@ -36,7 +36,7 @@ if ($connection === false) {
             exit;  
         }
         echo "Serveri është i plotë. Duke provuar... \n";
-        sleep(15); 
+        sleep(10); 
         socket_close($client_socket);  // Mbyllim socketin dhe provojme perseri
         $client_socket = create_socket(); 
         continue;
