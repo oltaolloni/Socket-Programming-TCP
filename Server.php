@@ -104,7 +104,7 @@ while (true) {
         $data = trim($data);
         if ($data) {
             echo "Mesazh nga klienti me IP: {$client['ip']}:\033[0;32m $data\033[0m\r\n";
-            log_request("Mesazh nga klienti me IP: {$client['ip']}: $data");
+            log_request("Mesazh nga klienti: $data");
 
             // Shkrimi i mesazhit 
             file_put_contents($messages_file, "Mesazh nga klienti: $data\r\n", FILE_APPEND);
