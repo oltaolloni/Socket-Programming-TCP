@@ -41,14 +41,14 @@ while (true) {
 
     if (in_array($server_socket, $read_sockets)) {
         if (count($client_sockets) < $max_clients) {
-            if (array_key_exists($client['ip'], $timedOutClients)) {
-                $client = $timedOutClients[$client['ip']]; // Restore the timed-out client connection
-                unset($timedOutClients[$client['ip']]); // Remove from timed-out clients list
-            } else {
                 $new_socket = socket_accept($server_socket);
             $client_ip = '';
             socket_getpeername($new_socket, $client_ip);
-            $client_sockets[] = [
+            if (array_key_exists($client_ip, $timedOutClients)) {
+                $client = $timedOutClients[$client['ip']]; // Restore the timed-out client connection
+                unset($timedOutClients[$client['ip']]); // Remove from timed-out clients list
+            }else{
+                $client_sockets[] = [
                 'socket' => $new_socket,
                 'isAdmin' => false,
                 'ip' => $client_ip,

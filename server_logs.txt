@@ -14,3 +14,11 @@
 [2024-11-10 20:28:15] Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini
 [2024-11-10 20:32:37] Klienti me IP: 192.168.100.7 është larguar për shkak të inaktivitetit.
 [2024-11-10 20:32:37] Klienti me IP: 192.168.100.9 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:56:16] Klienti me IP: 127.0.0.1 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:56:28] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 21:03:07] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 21:04:18] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 21:06:11] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 21:09:36] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 21:10:04] Një klient është larguar
+[2024-11-10 21:10:19] Lidhje e re nga klienti me IP: 127.0.0.1
