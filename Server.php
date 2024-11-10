@@ -57,7 +57,7 @@ while (true) {
            $temp_socket = socket_accept($server_socket);
            if ($temp_socket) {
                echo "Serveri është i plotë, lidhja u shtua në radhën e pritjes\n";
-               socket_write($temp_socket, "FULL_SERVER", 1024);  // Dërgon mesazhin "FULL_SERVER"
+               socket_write($temp_socket, "\033[0;36mFULL_SERVER\033[0m", 1024);  // Dërgon mesazhin "FULL_SERVER"
                socket_close($temp_socket);  // Mbyll lidhjen
            }
        }
