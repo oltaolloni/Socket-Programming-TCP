@@ -14,9 +14,7 @@ function create_socket() {
     return $socket;
 }
 
-
-
-$client_socket = create_socket();  // Krijo socket të ri çdo herë që do të provojmë lidhjen
+$client_socket = create_socket();  
 
 echo "Duke u kyqur ne server...\n";
 
@@ -27,7 +25,7 @@ if ($connection === false) {
     die("Unable to connect to server: " . socket_strerror(socket_last_error()) . "\n");
 }
 
-    // Kontrollo përgjigjen fillestare nga serveri
+    // Kontrollo pergjigjen fillestare nga serveri
     $initial_response = socket_read($client_socket, 1024);
     if (strpos($initial_response, "FULL_SERVER") !== false) {
         if (($current_time - $start_time) > $max_wait_time) {
@@ -35,13 +33,13 @@ if ($connection === false) {
             exit;  
         }
         echo "Serveri është i plotë. Duke provuar... \n";
-        sleep(15); // Presim 5 sekonda dhe mund të provojmë përsëri
-        socket_close($client_socket);  // Mbyllim socketin dhe provojmë përsëri
-        $client_socket = create_socket(); // Krijo një socket të ri çdo herë që provon lidhjen
+        sleep(15); 
+        socket_close($client_socket);  // Mbyllim socketin dhe provojme perseri
+        $client_socket = create_socket(); 
         continue;
     } elseif (strpos($initial_response, "CONNECTED") !== false) {
         echo "Connected to server at $server_ip:$server_port\n";
-        break;  // Lidhja është realizuar, dalim nga cikli
+        break;
     } else {
         echo "Mesazh i papritur nga serveri: $initial_response\n";
         socket_close($client_socket);

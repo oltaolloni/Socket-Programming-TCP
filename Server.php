@@ -1,17 +1,15 @@
 <?php
 
-// echo "\033[0;36mEnter Server IP:\033[0m ";
-// $server_ip = readline();
 $server_ip='127.0.0.1';
 $server_port = 12345;
-$max_clients = 4;  // Maksimumi i klientëve që mund të lidhen në të njëjtën kohë
-$client_sockets = []; // Lista e klientëve të lidhur
+$max_clients = 4;  
+$client_sockets = []; 
 $log_file = "server_logs.txt";
 $messages_file = 'client_messages.txt';
 $admin_code="RANDOM123";
 $timeout = 120;
 
-// Krijimi i socket-it të serverit
+// Krijimi i socket-it
 $server_socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 if (!$server_socket) {
     die("Nuk u krijua socket-i: " . socket_strerror(socket_last_error()) . "\n");
@@ -22,7 +20,7 @@ socket_listen($server_socket) or die("Serveri nuk mund të dëgjojë për lidhje
 
 echo "Serveri po dëgjon në IP: $server_ip dhe portin: $server_port\n";
 
-// Funksion për log-imin e kërkesave
+// Funksion per shkrimin e kerkesave
 function log_request($message) {
     global $log_file;
     $timestamp = date("Y-m-d H:i:s");
@@ -30,7 +28,7 @@ function log_request($message) {
 }
 
 while (true) {
-    // Kontrollon për lidhje të reja dhe pranimin e tyre
+    // Kontrollon lidhjet e reja dhe i pranon
     $read_sockets = array_column($client_sockets, 'socket');
     $read_sockets[] = $server_socket;
     $write = null;
@@ -44,7 +42,7 @@ while (true) {
         if (count($client_sockets) < $max_clients) {
             $new_socket = socket_accept($server_socket);
             $client_ip = '';
-            socket_getpeername($new_socket, $client_ip); // Retrieve client IP
+            socket_getpeername($new_socket, $client_ip);
             $client_sockets[] = [
                 'socket' => $new_socket,
                 'isAdmin' => false,
@@ -58,20 +56,18 @@ while (true) {
            $temp_socket = socket_accept($server_socket);
            if ($temp_socket) {
                echo "Serveri është i plotë, lidhja u shtua në radhën e pritjes\n";
-               socket_write($temp_socket, "\033[0;36mFULL_SERVER\033[0m", 1024);  // Dërgon mesazhin "FULL_SERVER"
-               socket_close($temp_socket);  // Mbyll lidhjen
+               socket_write($temp_socket, "\033[0;36mFULL_SERVER\033[0m", 1024);  // Dergon mesazhin "FULL_SERVER"
+               socket_close($temp_socket);  
            }
        }
        unset($read_sockets[array_search($server_socket, $read_sockets)]);
    }
-
 
    foreach ($client_sockets as $key => $client) {
     if (time() - $client['lastActivity'] > $timeout) {
         echo "Klienti me IP: {$client['ip']} është larguar për shkak të inaktivitetit.\n";
         log_request("Klienti me IP: {$client['ip']} është larguar për shkak të inaktivitetit.");
 
-        // Dërgo një mesazh për klientin për të njoftuar që lidhja po mbyllet për shkak të inaktivitetit
         socket_write($client['socket'], "TIMEOUT.\n", 1024);
         
         // Mbyll lidhjen dhe largo klientin nga lista
@@ -80,32 +76,31 @@ while (true) {
         unset($read_sockets[array_search($server_socket, $read_sockets)]);
 
     }
-}
-$client_sockets = array_values($client_sockets); 
+    }
 
+    $client_sockets = array_values($client_sockets); 
 
-    // Menaxhon mesazhet e dërguara nga klientët
     foreach ($read_sockets as $socket) {
         $data = @socket_read($socket, 1024, PHP_NORMAL_READ);
         if ($data === false) {
-            // Mbyll lidhjen nëse klienti largohet ose dërgon një sinjal për të përfunduar lidhjen
+         
             $index = array_search($socket, array_column($client_sockets, 'socket'));
             if ($index !== false) { 
                 unset($client_sockets[$index]);
-                $client_sockets = array_values($client_sockets); // Reindex to avoid gaps
+                $client_sockets = array_values($client_sockets); 
                 echo "\033[0;35mNjë klient është larguar\033[0m\n";
                 log_request("Një klient është larguar");
             }
-            socket_close($socket); // Close the socket after removing from the array
+            socket_close($socket); 
                     }
 
-        // Ruaj mesazhin e klientit dhe dërgoje përgjigjen
+        // Ruaj mesazhin e klientit dhe dergoje pergjigjen
         $data = trim($data);
         if ($data) {
             echo "Mesazh nga klienti:\033[0;32m $data\033[0m\r\n";
             log_request("Mesazh nga klienti: $data");
 
-            // Shkrimi i mesazhit për monitorim
+            // Shkrimi i mesazhit 
             file_put_contents($messages_file, "Mesazh nga klienti: $data\r\n", FILE_APPEND);
             $index = array_search($socket, array_column($client_sockets, 'socket'));
             if ($index !== false) {
@@ -155,18 +150,17 @@ $client_sockets = array_values($client_sockets);
 
                     case preg_match('/^WRITE/', $data, $matches) === 1:
                         if ( preg_match('/^WRITE\s+(\S+)\.txt\s+([\s\S]+)$/', $data, $matches) === 1){
-                        $filename = $matches[1] . '.txt';  // Get the filename from the regex capture
-                        $content = $matches[2];  // Get the content to write
+                        $filename = $matches[1] . '.txt';  
+                        $content = $matches[2];  
                     
                         // Check if the user is an admin
                         if (@$client_sockets[$index]['isAdmin']) {
-                            // Check if the file exists
+                          
                             if (!file_exists($filename)) {
-                                // If the file doesn't exist, create it
                                 file_put_contents($filename, $content . "\n");
                                 socket_write($socket, "Fajlli '$filename' u krijua dhe permbajtja u shenua.\n", 1024);
                             } else {
-                                // If the file exists, append content to it
+                                
                                 file_put_contents($filename, $content . "\n", FILE_APPEND);
                                 socket_write($socket, "Shenimi ne '$filename' u krye me sukses.\n", 1024);
                             }
@@ -205,7 +199,7 @@ $client_sockets = array_values($client_sockets);
                     case "EXIT":
                         socket_write($socket, "EXIT\n");
                         unset($client_sockets[$index]);
-                        $client_sockets = array_values($client_sockets); // Reindex array to avoid gaps
+                        $client_sockets = array_values($client_sockets); 
                         socket_close($socket);
                         echo "\033[0;35mKlienti u largua me komanden EXIT\033[0m\n";
                         break;
