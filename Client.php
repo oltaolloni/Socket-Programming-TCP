@@ -69,16 +69,18 @@ function send_command($socket, $command) {
         echo "\033[0;31m$response\033[0m\n"; 
         return false;
     }
-    
-    echo $response."\n";
-    if (trim($response) === "EXIT"){
-        return false;
-    }
     if(preg_match('/^Length: (\d+)$/', trim($response), $matches) === 1){
         $length= $matches[1];
         $file_content=socket_read($socket,$length);
         echo "$file_content\n";
+    }else{
+         echo $response."\n";
     }
+   
+    if (trim($response) === "EXIT"){
+        return false;
+    }
+   
 
     sleep(1); 
     return true;
