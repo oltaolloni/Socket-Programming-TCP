@@ -47,22 +47,16 @@ if ($connection === false) {
     }
 }
 
-
-
-
-
-
-
-// Function to send a command to the server
+// Dergimi i komandes ne server
 function send_command($socket, $command) {
 
     $write_result = @socket_write($socket, $command, strlen($command));
     if ($write_result === false) {
         echo "\033[0;31mKomanda deshtoj ne dergim. Serveri mund te jete ndalur\033[0m\n";
-        return false;  // Exit the loop if writing failed
+        return false;
     }
     $length=1049;
-    // Get the server's response
+    // Merr pergjigjen
     $response = socket_read($socket,$length);
 
     if ($response === false || $response === '') {
@@ -70,13 +64,12 @@ function send_command($socket, $command) {
         return false;
     }
 
-    // Kontrollo nëse serveri ka dërguar mesazhin TIMEOUT
+    // Kontrollo nese serveri ka derguar TIMEOUT mesazh
     if (strpos($response, "TIMEOUT") !== false) {
-        echo "\033[0;31m$response\033[0m\n"; // Shfaq mesazhin e timeout
-        return false; // Ndalo dërgimin e komandave të tjera
+        echo "\033[0;31m$response\033[0m\n"; 
+        return false;
     }
     
-
     echo $response."\n";
     if (trim($response) === "EXIT"){
         return false;
@@ -96,7 +89,7 @@ while ($ison) {
     echo "\033[0;32mEnter Command:\033[0m ";
     $command = readline();
 
-    // Kontrollo nëse serveri ka mbyllur lidhjen
+    // Kontrollo nese serveri ka mbyllur lidhjen
     if (strpos($command, "TIMEOUT") !== false) {
         echo "Lidhja është mbyllur për shkak të inaktivitetit.\n";
         $ison = false;
@@ -109,7 +102,6 @@ while ($ison) {
         $ison = send_command($client_socket, $command . "\r\n");
     }
 }
-
 
 socket_close($client_socket);
 echo "\033[0;35mLidhja u mbyll\033[0m\n";
