@@ -209,3 +209,35 @@
 [2024-11-09 15:55:01] Mesazh nga klienti: HELP
 [2024-11-09 15:55:16] Mesazh nga klienti: HELP
 [2024-11-09 15:55:22] Mesazh nga klienti: HELP
+[2024-11-10 00:55:29] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:00:46] Një klient është larguar
+[2024-11-10 01:06:29] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:06:37] Një klient është larguar
+[2024-11-10 01:07:18] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:07:30] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:07:42] Mesazh nga klienti: EXIT
+[2024-11-10 01:07:48] Lidhje e re nga klienti me IP: 
+[2024-11-10 01:18:56] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:19:07] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:19:14] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:19:50] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:19:57] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:20:20] Mesazh nga klienti: EXIT
+[2024-11-10 01:20:29] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:22:06] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:22:26] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:22:32] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:22:37] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:22:40] Mesazh nga klienti: EXIT
+[2024-11-10 01:22:51] Një klient është larguar
+[2024-11-10 01:23:06] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:23:12] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:23:25] Mesazh nga klienti: EXIT
+[2024-11-10 01:23:30] Mesazh nga klienti: PPP
+[2024-11-10 01:23:34] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:23:34] Mesazh nga klienti: HELP
+[2024-11-10 01:29:16] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:30:48] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:30:56] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 01:31:06] Mesazh nga klienti: EXIT
+[2024-11-10 01:31:16] Lidhje e re nga klienti me IP: 127.0.0.1

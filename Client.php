@@ -3,20 +3,56 @@ echo "\033[0;36mEnter Server IP:\033[0m ";
 $server_ip = readline();
 echo "\033[0;36mEnter Port:\033[0m ";
 $server_port = readline();
-$client_socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+$max_wait_time = 60;
+$start_time = time();
 
-if ($client_socket === false) {
-    die("Failed to create socket: " . socket_strerror(socket_last_error()) . "\n");
+function create_socket() {
+    $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+    if ($socket === false) {
+        die("Failed to create socket: " . socket_strerror(socket_last_error()) . "\n");
+    }
+    return $socket;
 }
 
+
+
+$client_socket = create_socket();  // Krijo socket të ri çdo herë që do të provojmë lidhjen
+
 echo "Duke u kyqur ne server...\n";
+
+while (true) {
 $connection = socket_connect($client_socket, $server_ip, $server_port);
 
 if ($connection === false) {
     die("Unable to connect to server: " . socket_strerror(socket_last_error()) . "\n");
 }
 
-echo "Te lidhur ne serverin $server_ip:$server_port\n";
+    // Kontrollo përgjigjen fillestare nga serveri
+    $initial_response = socket_read($client_socket, 1024);
+    if (strpos($initial_response, "FULL_SERVER") !== false) {
+        if (($current_time - $start_time) > $max_wait_time) {
+            socket_close($client_socket);
+            exit;  
+        }
+        echo "Serveri është i plotë. Duke provuar... \n";
+        sleep(15); // Presim 5 sekonda dhe mund të provojmë përsëri
+        socket_close($client_socket);  // Mbyllim socketin dhe provojmë përsëri
+        $client_socket = create_socket(); // Krijo një socket të ri çdo herë që provon lidhjen
+        continue;
+    } elseif (strpos($initial_response, "CONNECTED") !== false) {
+        echo "Connected to server at $server_ip:$server_port\n";
+        break;  // Lidhja është realizuar, dalim nga cikli
+    } else {
+        echo "Mesazh i papritur nga serveri: $initial_response\n";
+        socket_close($client_socket);
+        exit;
+    }
+}
+
+
+
+
+
 
 
 // Function to send a command to the server

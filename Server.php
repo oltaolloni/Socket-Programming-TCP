@@ -5,9 +5,8 @@
 $server_ip='127.0.0.1';
 // $server_port = rand(10000, 65535);
 $server_port = 12345;
-$max_clients = 4;  // Maksimumi i klientëve që mund të lidhen në të njëjtën kohë
+$max_clients = 2;  // Maksimumi i klientëve që mund të lidhen në të njëjtën kohë
 $client_sockets = []; // Lista e klientëve të lidhur
-$waiting_queue = []; // Lista e klientëve që presin për të u lidhur
 $log_file = "server_logs.txt";
 $messages_file = 'client_messages.txt';
 $admin_code="RANDOM123";
@@ -42,8 +41,8 @@ while (true) {
     }
 
     if (in_array($server_socket, $read_sockets)) {
-        $new_socket = socket_accept($server_socket);
-        if ($new_socket && count($client_sockets) < $max_clients) {
+        if (count($client_sockets) < $max_clients) {
+            $new_socket = socket_accept($server_socket);
             $client_ip = '';
             socket_getpeername($new_socket, $client_ip); // Retrieve client IP
             $client_sockets[] = [
@@ -52,15 +51,18 @@ while (true) {
                 'ip' => $client_ip
             ];
             echo "\033[0;36mLidhje e re nga klienti me IP:\033[0m " . $client_sockets[count($client_sockets)-1]['ip'] . "\n";
+            socket_write($new_socket, "CONNECTED\n", 1024);
             log_request("Lidhje e re nga klienti me IP: " . $client_sockets[count($client_sockets)-1]['ip']);
         } else {
-            // Nëse serveri është i plotë, shto klientin në radhën e pritjes
-            $waiting_queue[] = $new_socket;
-            echo "Serveri është i plotë, lidhja u shtua në radhën e pritjes\n";
-            socket_write($new_socket, "Serveri eshte plote. Jeni vendosur ne pritje", 1049);
-        }
-        unset($read_sockets[array_search($server_socket, $read_sockets)]);
-    }
+           $temp_socket = socket_accept($server_socket);
+           if ($temp_socket) {
+               echo "Serveri është i plotë, lidhja u shtua në radhën e pritjes\n";
+               socket_write($temp_socket, "FULL_SERVER", 1024);  // Dërgon mesazhin "FULL_SERVER"
+               socket_close($temp_socket);  // Mbyll lidhjen
+           }
+       }
+       unset($read_sockets[array_search($server_socket, $read_sockets)]);
+   }
 
     // Menaxhon mesazhet e dërguara nga klientët
     foreach ($read_sockets as $socket) {
@@ -73,19 +75,6 @@ while (true) {
                 $client_sockets = array_values($client_sockets); // Reindex to avoid gaps
                 echo "\033[0;35mNjë klient është larguar\033[0m\n";
                 log_request("Një klient është larguar");
-
-                // Handle waiting queue by accepting the next client if there is space
-                if (!empty($waiting_queue)) {
-                    $next_socket = array_shift($waiting_queue); // Get the first client in queue
-                    $client_sockets[] = [
-                        'socket' => $next_socket,
-                        'isAdmin' => false,
-                        'ip' => ''
-                    ];
-                    socket_getpeername($next_socket, $client_sockets[count($client_sockets) - 1]['ip']);
-                    echo "Klienti nga radhë me IP: " . $client_sockets[count($client_sockets) - 1]['ip'] . " u pranua\n";
-                    log_request("Klienti nga radhë me IP: " . $client_sockets[count($client_sockets) - 1]['ip'] . " u pranua");
-                }
             }
             socket_close($socket); // Close the socket after removing from the array
                     }
