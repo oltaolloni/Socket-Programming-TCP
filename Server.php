@@ -107,10 +107,16 @@ while (true) {
                         break;
 
                         case  preg_match('/^EXEC/', $data, $matches) === 1:
-                            if(preg_match('/^EXEC\s+(\S+)$/', $data, $matches) === 1){
+                            if(preg_match('/^EXEC\s+(\S+)(?:\s+(\S+))?$/', $data, $matches) === 1){
                                 if (@$client_sockets[$index]['isAdmin']) {
                                     $command= $matches[1];
-                                    $output = shell_exec(trim($command)); // Use 'ls' for Linux
+                                    $optional= $matches[2];
+                                    if ($optional!==null){
+                                        $output = shell_exec(trim($command." ".$optional));
+                                    }else{
+                                    $output = shell_exec(trim($command));
+                                    }
+
                                     $length = strlen($output);
                                     socket_write($socket,"Length: $length",1049);
                                     socket_write($socket, $output, $length);
