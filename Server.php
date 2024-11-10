@@ -89,6 +89,9 @@ while (true) {
             file_put_contents($messages_file, "Mesazh nga klienti: $data\r\n", FILE_APPEND);
             $index = array_search($socket, array_column($client_sockets, 'socket'));
             if ($index !== false) {
+               if(!@$client_sockets[$index]['isAdmin']){
+                sleep(3);
+               }
                 switch ($data) {
                     case  preg_match('/^READ/', $data, $matches) === 1:
                         if(preg_match('/^READ\s+(\S+).txt$/', $data, $matches) === 1){
