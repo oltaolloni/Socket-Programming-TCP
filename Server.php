@@ -3,13 +3,13 @@
 // echo "\033[0;36mEnter Server IP:\033[0m ";
 // $server_ip = readline();
 $server_ip='127.0.0.1';
-// $server_port = rand(10000, 65535);
 $server_port = 12345;
-$max_clients = 2;  // Maksimumi i klientëve që mund të lidhen në të njëjtën kohë
+$max_clients = 4;  // Maksimumi i klientëve që mund të lidhen në të njëjtën kohë
 $client_sockets = []; // Lista e klientëve të lidhur
 $log_file = "server_logs.txt";
 $messages_file = 'client_messages.txt';
 $admin_code="RANDOM123";
+$timeout = 120;
 
 // Krijimi i socket-it të serverit
 $server_socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -48,7 +48,8 @@ while (true) {
             $client_sockets[] = [
                 'socket' => $new_socket,
                 'isAdmin' => false,
-                'ip' => $client_ip
+                'ip' => $client_ip,
+                'lastActivity'=>time()
             ];
             echo "\033[0;36mLidhje e re nga klienti me IP:\033[0m " . $client_sockets[count($client_sockets)-1]['ip'] . "\n";
             socket_write($new_socket, "CONNECTED\n", 1024);
@@ -63,6 +64,25 @@ while (true) {
        }
        unset($read_sockets[array_search($server_socket, $read_sockets)]);
    }
+
+
+   foreach ($client_sockets as $key => $client) {
+    if (time() - $client['lastActivity'] > $timeout) {
+        echo "Klienti me IP: {$client['ip']} është larguar për shkak të inaktivitetit.\n";
+        log_request("Klienti me IP: {$client['ip']} është larguar për shkak të inaktivitetit.");
+
+        // Dërgo një mesazh për klientin për të njoftuar që lidhja po mbyllet për shkak të inaktivitetit
+        socket_write($client['socket'], "TIMEOUT.\n", 1024);
+        
+        // Mbyll lidhjen dhe largo klientin nga lista
+        socket_close($client['socket']);
+        unset($client_sockets[$key]);
+        unset($read_sockets[array_search($server_socket, $read_sockets)]);
+
+    }
+}
+$client_sockets = array_values($client_sockets); 
+
 
     // Menaxhon mesazhet e dërguara nga klientët
     foreach ($read_sockets as $socket) {

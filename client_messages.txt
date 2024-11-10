@@ -105,3 +105,4 @@ Mesazh nga klienti: EXIT
 Mesazh nga klienti: PPP
 Mesazh nga klienti: HELP
 Mesazh nga klienti: EXIT
+Mesazh nga klienti: HELP
