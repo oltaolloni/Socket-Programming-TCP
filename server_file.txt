@@ -1,1 +1,2 @@
 Ky eshte nje server file dhe kjo eshte permbajtja e tij.
+Shkrim nga admini

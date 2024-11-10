@@ -114,3 +114,20 @@ Mesazh nga klienti: READ server_logs.txt
 Mesazh nga klienti: STATUS
 Mesazh nga klienti: READ server_file.txt
 Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: sUPER RANDOM123
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: EXEC ipconfig
+Mesazh nga klienti: HELP
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: EXEC ipconfig
+Mesazh nga klienti: WRITE server_file.txt
+Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: HELP
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini.
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini

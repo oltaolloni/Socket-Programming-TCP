@@ -289,3 +289,32 @@
 [2024-11-10 20:06:51] Mesazh nga klienti: READ server_file.txt
 [2024-11-10 20:07:25] Mesazh nga klienti: READ server_file.txt
 [2024-11-10 20:08:54] Klienti me IP: 127.0.0.1 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:17:40] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 20:18:04] Një klient është larguar
+[2024-11-10 20:18:36] Lidhje e re nga klienti me IP: 192.168.100.9
+[2024-11-10 20:19:16] Mesazh nga klienti: sUPER RANDOM123
+[2024-11-10 20:19:25] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-10 20:20:38] Mesazh nga klienti: READ server_file.txt
+[2024-11-10 20:21:54] Lidhje e re nga klienti me IP: 192.168.100.7
+[2024-11-10 20:21:54] Klienti me IP: 192.168.100.9 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:22:18] Lidhje e re nga klienti me IP: 192.168.100.9
+[2024-11-10 20:22:42] Mesazh nga klienti: READ server_file.txt
+[2024-11-10 20:22:45] Mesazh nga klienti: EXEC ipconfig
+[2024-11-10 20:22:58] Mesazh nga klienti: HELP
+[2024-11-10 20:23:08] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-10 20:23:20] Mesazh nga klienti: READ server_file.txt
+[2024-11-10 20:23:23] Mesazh nga klienti: EXEC ipconfig
+[2024-11-10 20:24:50] Mesazh nga klienti: WRITE server_file.txt
+[2024-11-10 20:24:50] Mesazh nga klienti: READ server_file.txt
+[2024-11-10 20:25:11] Klienti me IP: 192.168.100.7 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:25:11] Mesazh nga klienti: HELP
+[2024-11-10 20:25:36] Klienti me IP: 192.168.100.9 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:26:57] Lidhje e re nga klienti me IP: 192.168.100.7
+[2024-11-10 20:27:10] Lidhje e re nga klienti me IP: 192.168.100.9
+[2024-11-10 20:27:32] Mesazh nga klienti: READ server_logs.txt
+[2024-11-10 20:27:35] Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini.
+[2024-11-10 20:27:49] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-10 20:28:12] Mesazh nga klienti: READ server_logs.txt
+[2024-11-10 20:28:15] Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini
+[2024-11-10 20:32:37] Klienti me IP: 192.168.100.7 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:32:37] Klienti me IP: 192.168.100.9 është larguar për shkak të inaktivitetit.
