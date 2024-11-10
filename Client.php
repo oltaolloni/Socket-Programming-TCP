@@ -1,10 +1,12 @@
 <?php
+session_start();
 echo "\033[0;36mEnter Server IP:\033[0m ";
 $server_ip = readline();
 echo "\033[0;36mEnter Port:\033[0m ";
 $server_port = readline();
 $max_wait_time = 60;
 $start_time = time();
+$_SESSION['isAdmin']=false;
 
 function create_socket() {
     $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -63,7 +65,9 @@ function send_command($socket, $command) {
         echo "\033[0;31mServeri u qkyq.\033[0m\n";
         return false;
     }
-
+    if(!$_SESSION['isAdmin']){
+        sleep(1.5);
+    }
     // Kontrollo nese serveri ka derguar TIMEOUT mesazh
     if (strpos($response, "TIMEOUT") !== false) {
         echo "\033[0;31m$response\033[0m\n"; 
@@ -76,7 +80,9 @@ function send_command($socket, $command) {
     }else{
          echo $response."\n";
     }
-   
+    if(preg_match('/Tani jeni admin/',trim($response),$matches)===1){
+        $_SESSION['isAdmin']=true;
+    }
     if (trim($response) === "EXIT"){
         return false;
     }
@@ -107,5 +113,5 @@ while ($ison) {
 
 socket_close($client_socket);
 echo "\033[0;35mLidhja u mbyll\033[0m\n";
-
+session_destroy()
 ?>
