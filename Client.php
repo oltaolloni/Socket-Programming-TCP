@@ -30,6 +30,7 @@ if ($connection === false) {
     // Kontrollo pergjigjen fillestare nga serveri
     $initial_response = socket_read($client_socket, 1024);
     if (strpos($initial_response, "FULL_SERVER") !== false) {
+        $current_time = time();
         if (($current_time - $start_time) > $max_wait_time) {
             socket_close($client_socket);
             exit;  

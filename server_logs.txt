@@ -22,3 +22,13 @@
 [2024-11-10 21:09:36] Lidhje e re nga klienti me IP: 127.0.0.1
 [2024-11-10 21:10:04] Një klient është larguar
 [2024-11-10 21:10:19] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 22:53:22] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 22:53:37] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 22:53:54] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 22:54:10] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 22:54:40] Mesazh nga klienti: EXIT
+[2024-11-10 22:54:40] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 22:54:59] Një klient është larguar
+[2024-11-10 22:55:01] Një klient është larguar
+[2024-11-10 22:55:03] Një klient është larguar
+[2024-11-10 22:55:04] Një klient është larguar

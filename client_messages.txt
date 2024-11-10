@@ -21,3 +21,4 @@ Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini.
 Mesazh nga klienti: SUPER RANDOM123
 Mesazh nga klienti: READ server_logs.txt
 Mesazh nga klienti: WRITE server_file.txt Shkrim nga admini
+Mesazh nga klienti: EXIT
