@@ -106,3 +106,11 @@ Mesazh nga klienti: PPP
 Mesazh nga klienti: HELP
 Mesazh nga klienti: EXIT
 Mesazh nga klienti: HELP
+Mesazh nga klienti: HELP
+Mesazh nga klienti: HELP
+Mesazh nga klienti: SUPER RANDOM123
+Mesazh nga klienti: read server_logs.txt
+Mesazh nga klienti: READ server_logs.txt
+Mesazh nga klienti: STATUS
+Mesazh nga klienti: READ server_file.txt
+Mesazh nga klienti: READ server_file.txt

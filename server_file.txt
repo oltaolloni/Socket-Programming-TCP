@@ -1,5 +1,1 @@
-Shtuar nga klienti me privilegje të plota
-Shtuar nga klienti me privilegje të plota
-Shkrim nga Admini
-Shkrim nga Admini
-content
+Ky eshte nje server file dhe kjo eshte permbajtja e tij.

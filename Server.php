@@ -4,10 +4,11 @@ $server_ip='127.0.0.1';
 $server_port = 12345;
 $max_clients = 4;  
 $client_sockets = []; 
+$timedOutClients = []; // Array to store timed-out clients
 $log_file = "server_logs.txt";
 $messages_file = 'client_messages.txt';
 $admin_code="RANDOM123";
-$timeout = 120;
+$timeout = 180;
 
 // Krijimi i socket-it
 $server_socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -40,7 +41,11 @@ while (true) {
 
     if (in_array($server_socket, $read_sockets)) {
         if (count($client_sockets) < $max_clients) {
-            $new_socket = socket_accept($server_socket);
+            if (array_key_exists($client['ip'], $timedOutClients)) {
+                $client = $timedOutClients[$client['ip']]; // Restore the timed-out client connection
+                unset($timedOutClients[$client['ip']]); // Remove from timed-out clients list
+            } else {
+                $new_socket = socket_accept($server_socket);
             $client_ip = '';
             socket_getpeername($new_socket, $client_ip);
             $client_sockets[] = [
@@ -52,6 +57,7 @@ while (true) {
             echo "\033[0;36mLidhje e re nga klienti me IP:\033[0m " . $client_sockets[count($client_sockets)-1]['ip'] . "\n";
             socket_write($new_socket, "CONNECTED\n", 1024);
             log_request("Lidhje e re nga klienti me IP: " . $client_sockets[count($client_sockets)-1]['ip']);
+            }
         } else {
            $temp_socket = socket_accept($server_socket);
            if ($temp_socket) {
@@ -67,7 +73,7 @@ while (true) {
     if (time() - $client['lastActivity'] > $timeout) {
         echo "Klienti me IP: {$client['ip']} është larguar për shkak të inaktivitetit.\n";
         log_request("Klienti me IP: {$client['ip']} është larguar për shkak të inaktivitetit.");
-
+        $timedOutClients[$client['ip']] = $client;
         socket_write($client['socket'], "TIMEOUT.\n", 1024);
         
         // Mbyll lidhjen dhe largo klientin nga lista

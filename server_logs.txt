@@ -275,3 +275,17 @@
 [2024-11-10 19:02:54] Klienti me IP: 127.0.0.1 është larguar për shkak të inaktivitetit.
 [2024-11-10 19:02:55] Një klient është larguar
 [2024-11-10 19:03:47] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 20:01:22] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 20:03:23] Klienti me IP: 127.0.0.1 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:03:38] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 20:03:44] Mesazh nga klienti: HELP
+[2024-11-10 20:05:22] Mesazh nga klienti: HELP
+[2024-11-10 20:05:45] Klienti me IP: 127.0.0.1 është larguar për shkak të inaktivitetit.
+[2024-11-10 20:06:04] Lidhje e re nga klienti me IP: 127.0.0.1
+[2024-11-10 20:06:15] Mesazh nga klienti: SUPER RANDOM123
+[2024-11-10 20:06:28] Mesazh nga klienti: read server_logs.txt
+[2024-11-10 20:06:42] Mesazh nga klienti: READ server_logs.txt
+[2024-11-10 20:06:43] Mesazh nga klienti: STATUS
+[2024-11-10 20:06:51] Mesazh nga klienti: READ server_file.txt
+[2024-11-10 20:07:25] Mesazh nga klienti: READ server_file.txt
+[2024-11-10 20:08:54] Klienti me IP: 127.0.0.1 është larguar për shkak të inaktivitetit.
