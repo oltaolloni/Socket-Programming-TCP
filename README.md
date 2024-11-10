@@ -4,20 +4,20 @@ Ky program përfshin një server dhe disa klientë që lidhen me të përmes pro
 
 ## Komandat e Klientëve
 
-#### Komandat për Klientin e thjeshte
+#### Komandat për Klientin e thjeshtë
 
-- **`HELP `**: Liston komandat qe mund te ekzekutoj klienti
+- **`HELP `**: Liston komandat që mund të ekzekutoj klienti.
 - **`READ [path/to/file]`**: Lexon përmbajtjen e një file të specifikuar në server. Klienti mund të shohë përmbajtjen, por nuk mund të bëjë modifikime.
-- **`SUPER [ADMIN_CODE] `**: Komanda per tu qasur si admin
-- **`EXIT `**: Mbyll lidhjen me serverin
+- **`SUPER [ADMIN_CODE] `**: Komanda për tu qasur si admin.
+- **`EXIT `**: Mbyll lidhjen me serverin.
   
 #### Komandat për Klientin me Qasje të Plotë
 
-- **`HELP `**: Liston komandat qe mund te ekzekutoj klienti me qasje te plote
+- **`HELP `**: Liston komandat që mund të ekzekutoj klienti me qasje të plotë.
 - **`READ [path/to/file]`**: Lexon përmbajtjen e një file të specifikuar në server.
-- **`WRITE [path/to/file] [content] `**: Shkruan ne një file të specifikuar në server.
-- **`EXEC [comand] `**: Ekzekuton kod te sistemit ku operon serveri.
-- **`EXIT `**: Mbyll lidhjen me serverin
+- **`WRITE [path/to/file] [content] `**: Shkruan në një file të specifikuar në server.
+- **`EXEC [comand] `**: Ekzekuton kod të sistemit ku operon serveri.
+- **`EXIT `**: Mbyll lidhjen me serverin.
 
 ## Hapat për Ekzekutimin e Programit
 
