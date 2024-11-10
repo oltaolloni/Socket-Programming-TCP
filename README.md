@@ -2,6 +2,23 @@
 
 Ky program përfshin një server dhe disa klientë që lidhen me të përmes protokollit TCP duke përdorur sockets në PHP. Programi lejon komunikimin mes serverit dhe klientëve, ku një klient mund të kenë qasje të plotë (write, read, execute) dhe të tjerët vetëm për lexim (read).
 
+## Komandat e Klientëve
+
+#### Komandat për Klientin e thjeshte
+
+- **`HELP `**: Liston komandat qe mund te ekzekutoj klienti
+- **`READ [path/to/file]`**: Lexon përmbajtjen e një file të specifikuar në server. Klienti mund të shohë përmbajtjen, por nuk mund të bëjë modifikime.
+- **`SUPER [ADMIN_CODE] `**: Komanda per tu qasur si admin
+- **`EXIT `**: Mbyll lidhjen me serverin
+  
+#### Komandat për Klientin me Qasje të Plotë
+
+- **`HELP `**: Liston komandat qe mund te ekzekutoj klienti me qasje te plote
+- **`READ [path/to/file]`**: Lexon përmbajtjen e një file të specifikuar në server.
+- **`WRITE [path/to/file] [content] `**: Shkruan ne një file të specifikuar në server.
+- **`EXEC [comand] `**: Ekzekuton kod te sistemit ku operon serveri.
+- **`EXIT `**: Mbyll lidhjen me serverin
+
 ## Hapat për Ekzekutimin e Programit
 
 ### 1. Aktivizimi i PHP sockets
